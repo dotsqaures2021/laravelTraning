@@ -65,9 +65,26 @@
                     <td style="width: 1%">{{ $user->id }}</td>
                     <td style="width: 20%">{{ $user->name }}</td>
                     <td style="width: 20%">{{ $user->email }}</td>
-                    <td style="width: 20%">{{ $user->bio }}</td>
+                    <td style="width: 20%">{{ \Str::limit($user->bio, 20) }}</td>
                     <td style="width: 10%">{{ $user->website }}</td>
                     <td style="width: 9%">{{ $user->status }}</td>
+                    <td class="project-actions text-right">
+                        <a class="btn btn-primary btn-sm" href="#">
+                            <i class="fas fa-folder">
+                            </i>
+                            View
+                        </a>
+                        <a class="btn btn-info btn-sm" href="users/{{ $user->id }}">
+                            <i class="fas fa-pencil-alt">
+                            </i>
+                            Edit
+                        </a>
+                        <a class="btn btn-danger btn-sm" href="#">
+                            <i class="fas fa-trash">
+                            </i>
+                            Delete
+                        </a>
+                    </td>
                 </tr>
                     
               @endforeach

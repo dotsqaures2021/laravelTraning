@@ -36,14 +36,18 @@
               </div>
             
                   @csrf
+
+              @foreach ($errors->all() as $error)
+                <div class="alert alert-danger">{{ $error }}</div>
+              @endforeach
               <div class="card-body">
                 <div class="form-group">
                   <label for="inputName">User Name</label>
-                  <input type="text" id="inputName" name="name" class="form-control" value="{{old('name')}}">
+                  <input type="text" id="inputName" name="name" class="form-control" value="{{ old('name') ? old('name') : $user->name}}">
                 </div>
                 <div class="form-group">
                   <label for="inputName">User Email</label>
-                  <input type="email" id="inputEmail" name="email" class="form-control">
+                  <input type="email" id="inputEmail" name="email" class="form-control" value="{{ old('email') ?  old('email') : $user->email }}">
                 </div>
                 <div class="form-group">
                   <label for="inputName">User Password</label>
@@ -51,7 +55,7 @@
                 </div>
                 <div class="form-group">
                   <label for="inputDescription">User Bio</label>
-                  <textarea id="inputDescription" name="bio" class="form-control" rows="4"></textarea>
+                  <textarea id="inputDescription" name="bio" class="form-control" rows="4">{{ old('bio') ? old('bio') : $user->bio}} </textarea>
                 </div>
                 <div class="form-group">
                   <label for="inputStatus">Status</label>
@@ -63,7 +67,7 @@
                 </div>
                 <div class="form-group">
                   <label for="inputClientCompany">Website</label>
-                  <input type="url" id="inputClientCompany" name="website" class="form-control">
+                  <input type="url" id="inputClientCompany" name="website" class="form-control" value="{{ old('website') ? old('website') : $user->website }}">
                 </div>
                 
               </div>
