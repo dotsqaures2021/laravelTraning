@@ -19,8 +19,8 @@ class UserController extends Controller
     }
     public function getuser(Request $request){
 
-        $data = User::get();
-        dd($data);
-        return view('pages.user-add');
+        $users = User::get();
+       // dd($data->pluck('name');
+        return view('pages.user-list')->with('users', $users);
     }
 }

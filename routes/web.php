@@ -22,6 +22,7 @@ Route::prefix('admin')->middleware(['test'])->group(function () {
     Route::get('/logout', [App\Http\Controllers\AdminController::class,'logout']);
     Route::get('/adduser', [App\Http\Controllers\Admin\UserController::class,'index']);
     Route::post('/adduser', [App\Http\Controllers\Admin\UserController::class,'submit']);
+    Route::get('/users', [App\Http\Controllers\Admin\UserController::class,'getuser']);
 });
 
 
