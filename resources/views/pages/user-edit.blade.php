@@ -12,7 +12,7 @@
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Add User</li>
+              <li class="breadcrumb-item active">Edit User</li>
             </ol>
           </div>
         </div>
@@ -21,7 +21,7 @@
 
     <!-- Main content -->
     <section class="content">
-      <form method="post" action="" enctype="multipart/form-data">
+      <form method="post" action="">
         <div class="row">
           <div class="col-12">
             <div class="card card-primary">
@@ -43,11 +43,11 @@
               <div class="card-body">
                 <div class="form-group">
                   <label for="inputName">User Name</label>
-                  <input type="text" id="inputName" name="name" class="form-control" value="{{ old('name') }}">
+                  <input type="text" id="inputName" name="name" class="form-control" value="{{ old('name') ? old('name') : $user->name}}">
                 </div>
                 <div class="form-group">
                   <label for="inputName">User Email</label>
-                  <input type="email" id="inputEmail" name="email" class="form-control" value="{{ old('email') }}">
+                  <input type="email" id="inputEmail" name="email" class="form-control" value="{{ old('email') ?  old('email') : $user->email }}">
                 </div>
                 <div class="form-group">
                   <label for="inputName">User Password</label>
@@ -55,11 +55,7 @@
                 </div>
                 <div class="form-group">
                   <label for="inputDescription">User Bio</label>
-                  <textarea id="inputDescription" name="bio" class="form-control" rows="4">{{ old('bio') }} </textarea>
-                </div>
-                <div class="form-group">
-                  <label for="inputFile">User Profile Image</label>
-                  <input type="file" name="image" class="form-control">
+                  <textarea id="inputDescription" name="bio" class="form-control" rows="4">{{ old('bio') ? old('bio') : $user->bio}} </textarea>
                 </div>
                 <div class="form-group">
                   <label for="inputStatus">Status</label>
@@ -71,7 +67,7 @@
                 </div>
                 <div class="form-group">
                   <label for="inputClientCompany">Website</label>
-                  <input type="url" id="inputClientCompany" name="website" class="form-control" value="{{ old('website') }}">
+                  <input type="url" id="inputClientCompany" name="website" class="form-control" value="{{ old('website') ? old('website') : $user->website }}">
                 </div>
                 
               </div>
@@ -85,7 +81,7 @@
         <div class="row">
           <div class="col-12">
             <a href="#" class="btn btn-secondary">Cancel</a>
-            <input type="submit" value="Create user" class="btn btn-success float-right">
+            <input type="submit" value="update user" class="btn btn-success float-right">
           </div>
         </div>
       </form>

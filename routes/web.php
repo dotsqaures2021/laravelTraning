@@ -18,15 +18,19 @@ use Illuminate\Http\Request;
 Route::match(['get', 'post'],'/login', [App\Http\Controllers\AdminController::class,'login'])->name('adminlogin');
 
 Route::prefix('admin')->middleware(['test'])->group(function () {
-    Route::get('/', [App\Http\Controllers\AdminController::class,'index'])->name('admindashboard');;
-    Route::get('/logout', [App\Http\Controllers\AdminController::class,'logout']);
-    Route::get('/adduser', [App\Http\Controllers\Admin\UserController::class,'index']);
-    Route::post('/adduser', [App\Http\Controllers\Admin\UserController::class,'submit']);
+    Route::get('/', [App\Http\Controllers\AdminController::class,'index'])->name('admindashboard');
+    Route::get('/logout', [App\Http\Controllers\AdminController::class,'logout'])->name('logout');;
+    Route::get('/adduser', [App\Http\Controllers\Admin\UserController::class,'index'])->name('adduser');;
+    Route::post('/adduser', [App\Http\Controllers\Admin\UserController::class,'submit'])->name('adduserpost');;
     Route::get('/users', [App\Http\Controllers\Admin\UserController::class,'getuser'])->name('userlist');
-    Route::get('/users/{id}', [App\Http\Controllers\Admin\UserController::class,'updateuser']);
-    Route::post('/users/{id}', [App\Http\Controllers\Admin\UserController::class,'updateuserdata']);
+    Route::get('/user/{id}', [App\Http\Controllers\Admin\UserController::class,'updateuser'])->name('updateuser');;
+    Route::post('/user/{id}', [App\Http\Controllers\Admin\UserController::class,'updateuserdata'])->name('updateuserpost');;
+    Route::delete('/delete/{id}', [App\Http\Controllers\Admin\UserController::class,'deleteuserdata'])->name('userlistafterdelete');
 });
 
+Route::resources([
+    'photos' => App\Http\Controllers\Admin\UserController::class
+]);
 
 Route::post('/save', [App\Http\Controllers\UserController::class,'submit']);
 Route::get('/', function () {
