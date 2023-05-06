@@ -26,14 +26,8 @@ class BrandController extends Controller
 
             return redirect()->route('brands')->with('message', 'Brand has been successfully created');
 
-            // if (Auth::guard('admin')->attempt(['email'=> $request->email , 'password' => $request->password])) {
-            //    return redirect()->route('admindashboard');
-            // }
-            // else{
-            //    return redirect()->back()->with('message','login failed');
-            // }
          }
-        //return view('pages.login');
+
         $brands = Brand::get();
         return view('pages.brand.brand-add')->with('brands', $brands);
     }

@@ -30,7 +30,7 @@ Route::prefix('admin')->middleware(['test'])->group(function () {
     Route::get('/updatebrand', [App\Http\Controllers\BrandController::class,'update'])->name('updatebrand');
 
     Route::get('/products', [App\Http\Controllers\ProductController::class,'index'])->name('products');
-    Route::get('/addproduct', [App\Http\Controllers\ProductController::class,'submit'])->name('addproduct');
+    Route::match(['get', 'post'],'/addproduct', [App\Http\Controllers\ProductController::class,'submit'])->name('addproduct');
     Route::get('/updateproduct', [App\Http\Controllers\ProductController::class,'update'])->name('updateproduct');
 
 });

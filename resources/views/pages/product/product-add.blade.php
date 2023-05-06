@@ -7,12 +7,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Add User</h1>
+            <h1>Add Product</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Add User</li>
+              <li class="breadcrumb-item active">Add Product</li>
             </ol>
           </div>
         </div>
@@ -42,33 +42,43 @@
               @endforeach
               <div class="card-body">
                 <div class="form-group">
-                  <label for="inputName">User Name</label>
+                  <label for="inputName">Name</label>
                   <input type="text" id="inputName" name="name" class="form-control" value="{{ old('name') }}">
                 </div>
                 <div class="form-group">
-                  <label for="inputName">User Email</label>
-                  <input type="email" id="inputEmail" name="email" class="form-control" value="{{ old('email') }}">
+                  <label for="inputName">Price</label>
+                  <input type="number" id="inputPrice" name="price" class="form-control" value="{{ old('email') }}">
                 </div>
                 <div class="form-group">
-                  <label for="inputName">User Password</label>
-                  <input type="password" id="inputPassword" name="password" class="form-control">
+                  <label for="inputName">Sale Price</label>
+                  <input type="number" id="inputSalePrice" name="sale_price" class="form-control">
                 </div>
                 <div class="form-group">
-                  <label for="inputDescription">User Bio</label>
-                  <textarea id="inputDescription" name="bio" class="form-control" rows="4">{{ old('bio') }} </textarea>
+                  <label for="inputBio">Product Description</label>
+                  <textarea id="inputDescription" name="description" class="form-control" rows="4">{{ old('bio') }} </textarea>
                 </div>
                 <div class="form-group">
-                  <label for="inputFile">User Profile Image</label>
+                  <label for="inputFile">Product Image</label>
                   <input type="file" name="image" class="form-control">
                 </div>
                 <div class="form-group">
                   <label for="inputStatus">Status</label>
-                  <select id="inputStatus" name="status" class="form-control custom-select">
+                  <select id="inputStatus" name="is_active" class="form-control custom-select">
                     <option selected disabled>Select one</option>
                     <option value="1">Active</option>
                     <option value="0">Inactive</option>
                   </select>
                 </div>
+                <div class="form-group">
+                  <label for="inputStatus">Brand</label>
+                  <select id="inputStatus" name="brand_id" class="form-control custom-select">
+                    <option selected disabled>Select one</option>
+                    @foreach ($brands as $brand)
+                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                    @endforeach
+
+                  </select>
+                </div>                
                 <div class="form-group">
                   <label for="inputClientCompany">Website</label>
                   <input type="url" id="inputClientCompany" name="website" class="form-control" value="{{ old('website') }}">
