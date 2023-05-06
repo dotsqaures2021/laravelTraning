@@ -16,15 +16,14 @@ class UserController extends Controller
     public function submit(UserPostRequest $request){
        // dd($request);
 
-        $imageName = time().'.'.$request->image->extension();  
-     
+        $imageName = time().'.'.$request->image->extension();       
         $request->image->move(public_path('images'), $imageName);
-
         $insertionData  = $request->except(['_token']);
         $insertionData['password'] = Hash::make($request->password);
-
+        $insertionData['image'] = $imageName;
         $data = User::create($insertionData);       
-        return view('pages.user-add');
+        //return view('pages.user-add');
+        return redirect()->route('userlist')->with('message', 'Record has been successfully created');
     }
     public function getuser(Request $request){
 
@@ -48,7 +47,7 @@ class UserController extends Controller
 
         $insertionData  = $request->except(['_token']);
         $data = User::where('id',$id)->update($insertionData);       
-        return redirect()->route('userlist')->with('message', 'Record has been successfully updated');;
+        return redirect()->route('userlist')->with('message', 'Record has been successfully updated');
     }
 
     public function deleteuserdata($id){

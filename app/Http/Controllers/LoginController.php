@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use Hash;
 
-class AdminController extends Controller
+class LoginController extends Controller
 {
      public function index(){
         return view('pages.admin');

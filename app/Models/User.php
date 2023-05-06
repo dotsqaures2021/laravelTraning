@@ -24,6 +24,7 @@ class User extends Authenticatable
         'status',
         'website',
         'bio',
+        'image',
     ];
 
     /**
