@@ -89,7 +89,7 @@
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <form method="post" action="{{ route('userlistafterdelete',['id'=>$product->id])}}">
+                                <form method="post" action="{{ route('productlistafterdelete',['id'=>$product->id])}}">
                                     @csrf
                                     @method('delete');
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

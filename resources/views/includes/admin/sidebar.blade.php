@@ -35,8 +35,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item {{ (request()->segment(2) == 'user') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ (request()->segment(2) == 'user') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Users
@@ -90,6 +90,36 @@
                 <a href="{{ route('addbrand') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add Brand</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Categories
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <!-- <li class="nav-item">
+                <a href="{{ route('userlist')  }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Profile</p>
+                </a>
+              </li> -->
+              <li class="nav-item">
+                <a href="{{ route('categories') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Category List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('addcategories') }}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Category</p>
                 </a>
               </li>
             </ul>

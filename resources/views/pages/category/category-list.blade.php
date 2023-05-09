@@ -57,11 +57,11 @@
                   </tr>
               </thead>
               <tbody>
-              @foreach ($brands as $brand)
+              @foreach ($categories as $category)
                 <tr>
-                    <td style="width: 1%">{{ $brand->id }}</td>
-                    <td style="width: 20%">{{ $brand->name }}</td>
-                    <td style="width: 20%"><img src="{{ asset('images') }}/{{ $brand->image }}"></td>
+                    <td style="width: 1%">{{ $category->id }}</td>
+                    <td style="width: 20%">{{ $category->name }}</td>
+                    <td style="width: 20%"><img src="{{ asset('images') }}/{{ $category->image }}" width="100"></td>
               
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="#">
@@ -69,27 +69,27 @@
                             </i>
                             View
                         </a>
-                        <a class="btn btn-info btn-sm" href="brand/{{ $brand->id }}">
+                        <a class="btn btn-info btn-sm" href="{{ route('updatecategories') }}/{{ $category->id }}">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit
                         </a>
-                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal_{{$brand->id}}" href="delete/{{ $brand->id }}">
+                        <a class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal_{{$category->id}}" href="{{ route('categorieslistafterdelete', ['id'=>$category->id]) }}">
                             <i class="fas fa-trash">
                             </i>
                             Delete
                         </a>
-                        <div class="modal fade" id="exampleModal_{{$brand->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="exampleModal_{{$category->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title{{$brand->id}}</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Modal title{{$category->id}}</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
                               <div class="modal-body">
-                                <form method="post" action="{{ route('brandlistafterdelete',['id'=>$brand->id])}}">
+                                <form method="post" action="{{ route('categorieslistafterdelete', ['id'=>$category->id]) }}">
                                     @csrf
                                     @method('delete');
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

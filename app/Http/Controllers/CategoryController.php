@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Brand;
+use App\Models\Category;
 
-class BrandController extends Controller
+class CategoryController extends Controller
 {
     //
     public function index(){
 
-        $brands = Brand::get();
-        return view('pages.brand.brand-list')->with('brands', $brands);
+        $categories = Category::get();
+        return view('pages.category.category-list')->with('categories', $categories);
     }
 
     public function submit(Request $request){
@@ -22,14 +22,14 @@ class BrandController extends Controller
             $request->image->move(public_path('images'), $imageName);
             $insertionData  = $request->except(['_token']);
             $insertionData['image'] = $imageName;
-            $data = Brand::create($insertionData);    
+            $data = Category::create($insertionData);    
 
-            return redirect()->route('brands')->with('message', 'Brand has been successfully created');
+            return redirect()->route('categories')->with('message', 'Brand has been successfully created');
 
          }
 
-        $brands = Brand::get();
-        return view('pages.brand.brand-add')->with('brands', $brands);
+        $categories = Category::get();
+        return view('pages.category.category-add')->with('categories', $categories);
     }
 
     public function update(){
@@ -43,9 +43,8 @@ class BrandController extends Controller
         // ]);
         
         //dd($id);
-        $data=Brand::find($id);
+        $data=Category::find($id);
         $data->delete($data->id);       
-        return redirect()->route('brands')->with('message', 'Record has been successfully deleted');
+        return redirect()->route('categories')->with('message', 'Record has been successfully deleted');
     }
-    
 }

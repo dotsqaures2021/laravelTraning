@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             //
-            $table->index('brand_id');
-            //$table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
-
+          //  $table->index('brand_id');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
         });
     }
 
