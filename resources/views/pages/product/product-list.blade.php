@@ -53,6 +53,12 @@
                       <th style="width: 20%">
                           Image
                       </th>
+                      <th style="width: 20%">
+                          Brand
+                      </th>
+                      <th style="width: 20%">
+                          Category
+                      </th>
                       
                   </tr>
               </thead>
@@ -62,14 +68,16 @@
                     <td style="width: 1%">{{ $product->id }}</td>
                     <td style="width: 20%">{{ $product->name }}</td>
                     <td style="width: 20%"><img src="{{ asset('images') }}/{{ $product->image }}"></td>
-              
+                    <td style="width: 20%">{{ $product->brand->name}}</td>
+                    <td style="width: 20%">{{ $product->category->name }}</td>
+
                     <td class="project-actions text-right">
                         <a class="btn btn-primary btn-sm" href="#">
                             <i class="fas fa-folder">
                             </i>
                             View
                         </a>
-                        <a class="btn btn-info btn-sm" href="product/{{ $product->id }}">
+                        <a class="btn btn-info btn-sm" href="{{ route('updateproduct' , $product->id  )}}">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit

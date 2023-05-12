@@ -27,17 +27,17 @@ Route::prefix('admin')->middleware(['test'])->group(function () {
 
     Route::get('/brands', [App\Http\Controllers\BrandController::class,'index'])->name('brands');
     Route::match(['get', 'post'],'/addbrand', [App\Http\Controllers\BrandController::class,'submit'])->name('addbrand');
-    Route::get('/updatebrand', [App\Http\Controllers\BrandController::class,'update'])->name('updatebrand');
+    Route::match(['get', 'post'],'/updatebrand/{id}', [App\Http\Controllers\BrandController::class,'update'])->name('updatebrand');
     Route::delete('/branddelete/{id}', [App\Http\Controllers\BrandController::class,'delete'])->name('brandlistafterdelete');
 
     Route::get('/products', [App\Http\Controllers\ProductController::class,'index'])->name('products');
     Route::match(['get', 'post'],'/addproduct', [App\Http\Controllers\ProductController::class,'submit'])->name('addproduct');
-    Route::get('/updateproduct', [App\Http\Controllers\ProductController::class,'update'])->name('updateproduct');
+    Route::match(['get', 'post'],'/updateproduct/{id}', [App\Http\Controllers\ProductController::class,'update'])->name('updateproduct');
     Route::delete('/productdelete/{id}', [App\Http\Controllers\ProductController::class,'delete'])->name('productlistafterdelete');
 
     Route::get('/categories', [App\Http\Controllers\CategoryController::class,'index'])->name('categories');
     Route::match(['get', 'post'],'/addcategory', [App\Http\Controllers\CategoryController::class,'submit'])->name('addcategories');
-    Route::get('/updatecategory', [App\Http\Controllers\CategoryController::class,'update'])->name('updatecategories');
+    Route::match(['get', 'post'],'/updatecategory/{id}', [App\Http\Controllers\CategoryController::class,'update'])->name('updatecategories');
     Route::delete('/categorydelete/{id}', [App\Http\Controllers\CategoryController::class,'delete'])->name('categorieslistafterdelete');
 
 });

@@ -35,8 +35,9 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item {{ (request()->segment(2) == 'user') ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link {{ (request()->segment(2) == 'user') ? 'active' : '' }}">
+               
+          <li class="nav-item {{ (request()->segment(2) == 'users') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ (request()->segment(2) == 'users') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Users
@@ -65,8 +66,8 @@
             </ul>
           </li>
 
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item {{ (request()->segment(2) == 'brands') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ (request()->segment(2) == 'brands') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Brands
@@ -95,8 +96,8 @@
             </ul>
           </li>
 
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item {{ (request()->segment(2) == 'categories') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ (request()->segment(2) == 'categories') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Categories
@@ -125,8 +126,8 @@
             </ul>
           </li>
 
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item {{ (request()->segment(2) == 'products') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ (request()->segment(2) == 'products') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Products

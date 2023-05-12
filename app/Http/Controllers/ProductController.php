@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Brand;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -12,7 +13,11 @@ class ProductController extends Controller
 
     public function index(){
 
-        $products = Product::get();
+        $products = Product::with(['brand', 'category'])->get();
+        //dd($products);
+        // $product = new Product;
+        // $brand = $product->brand();
+        // // dd($brand->name);
         return view('pages.product.product-list')->with('products', $products);
     }
 
@@ -22,15 +27,14 @@ class ProductController extends Controller
             
             $brand = Brand::find($request->brand_id);
             $product = new Product;
-          //  dd($brand);
+           //  dd($brand);
 
            // $profile->user()->associate($user);
-
             $imageName = time().'.'.$request->image->extension();       
             $request->image->move(public_path('images'), $imageName);
             $insertionData  = $request->except(['_token']);
             $insertionData['image'] = $imageName;
-           // $insertionData['brand_id'] = 15;
+            // $insertionData['brand_id'] = 15;
             //$product->brand()->associate($brand);
             $data = Product::create($insertionData);    
 
@@ -38,11 +42,25 @@ class ProductController extends Controller
          }
 
         $brands = Brand::get();
-        return view('pages.product.product-add')->with('brands', $brands);
+        $categories = Category::get();
+        return view('pages.product.product-add',compact(['categories', 'brands']));
     }
 
-    public function update(){
-        //return view('pages.brands.brand-update');
+    public function update(Request $request, $id){
+
+        if($request->isMethod('post')){
+            $insertionData  = $request->except(['_token']);
+            $data = Product::where('id',$id)->update($insertionData);  
+            return redirect()->route('products')->with('message', 'Record has been successfully updated');
+        } 
+
+        $product = Product::find($id);
+       // return view('pages.user-edit',['user'=>$users]);
+
+        $brands = Brand::get();
+        $categories = Category::get();
+        return view('pages.product.product-update',compact(['categories', 'brands','product']));
+
     }
 
     public function delete($id){
