@@ -69,7 +69,7 @@
                             </i>
                             View
                         </a>
-                        <a class="btn btn-info btn-sm" href="{{ route('updatecategories') }}/{{ $category->id }}">
+                        <a class="btn btn-info btn-sm" href="{{ route('updatecategories', $category->id ) }}">
                             <i class="fas fa-pencil-alt">
                             </i>
                             Edit

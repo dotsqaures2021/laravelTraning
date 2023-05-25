@@ -32,8 +32,17 @@ class CategoryController extends Controller
         return view('pages.category.category-add')->with('categories', $categories);
     }
 
-    public function update(){
+    public function update(Request $request , $id){
         //return view('pages.brands.brand-update');
+        if($request->isMethod('post')){
+            $insertionData  = $request->except(['_token']);
+            $data = Category::where('id',$id)->update($insertionData);  
+            return redirect()->route('categories')->with('message', 'Record has been successfully updated');
+        } 
+
+        $product = Category::find($id);
+
+        return view('pages.category.category-update',compact(['categories', 'brands','product']));
     }
 
     public function delete($id){

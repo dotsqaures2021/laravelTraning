@@ -13,6 +13,7 @@ class WebOController extends Controller
     public function index()
     {
         //
+        return view('layouts.frontend');
     }
 
     /**

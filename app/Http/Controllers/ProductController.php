@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Category;
+use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller
 {
@@ -18,6 +19,8 @@ class ProductController extends Controller
         // $product = new Product;
         // $brand = $product->brand();
         // // dd($brand->name);
+        $response = Http::get('https://dummyjson.com/products/1');
+        dd($response);
         return view('pages.product.product-list')->with('products', $products);
     }
 

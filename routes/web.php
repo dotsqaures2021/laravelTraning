@@ -34,14 +34,15 @@ Route::prefix('admin')->middleware(['test'])->group(function () {
     Route::match(['get', 'post'],'/addproduct', [App\Http\Controllers\ProductController::class,'submit'])->name('addproduct');
     Route::match(['get', 'post'],'/updateproduct/{id}', [App\Http\Controllers\ProductController::class,'update'])->name('updateproduct');
     Route::delete('/productdelete/{id}', [App\Http\Controllers\ProductController::class,'delete'])->name('productlistafterdelete');
-
+ 
     Route::get('/categories', [App\Http\Controllers\CategoryController::class,'index'])->name('categories');
     Route::match(['get', 'post'],'/addcategory', [App\Http\Controllers\CategoryController::class,'submit'])->name('addcategories');
-    Route::match(['get', 'post'],'/updatecategory/{id}', [App\Http\Controllers\CategoryController::class,'update'])->name('updatecategories');
+    Route::get('/updatecategory/{id}', [App\Http\Controllers\CategoryController::class,'update'])->name('updatecategories');
     Route::delete('/categorydelete/{id}', [App\Http\Controllers\CategoryController::class,'delete'])->name('categorieslistafterdelete');
 
 });
 
+Route::get('/', [App\Http\Controllers\Web\WebOController::class,'index'])->name('pages.index');
 
 Route::resources([
     'photos' => App\Http\Controllers\Admin\UserController::class
